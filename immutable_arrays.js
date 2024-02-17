@@ -40,3 +40,16 @@ const average = total / reviews.length;
 console.log("Durchschnitt:", average);
 
 // Grouping and couting
+const groupByReviews = (groups, reviews) => {
+    const { good = 0, ok = 0, bad = 0 } = groups;
+    if (reviews >= 4) {
+        return { ...groups, good: good + 1};
+    } else if (reviews >= 2.5) {
+        return { ...groups, ok: ok + 1 };
+    } else {
+        return { ...groups, bad: bad + 1 };
+    }
+};
+
+const reviewGroup = reviews.reduce(groupByReviews, {});
+console.log(reviewGroup);
